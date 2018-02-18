@@ -15,4 +15,13 @@ Rails.application.routes.draw do
   devise_for :admin_users
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :api do
+    namespace :v1 do
+      resources :drinks, only: :index, defaults: { format: :json }
+      resources :drink_additions, only: :index, defaults: { format: :json }
+      resources :drink_sub_additions, only: :index, defaults: { format: :json }
+      resources :coffee_shops, only: :index, defaults: { format: :json }
+    end
+  end
 end
