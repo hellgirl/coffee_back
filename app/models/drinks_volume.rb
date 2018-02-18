@@ -1,0 +1,2 @@
+class DrinksVolume < ApplicationRecord
+end
