@@ -9,8 +9,8 @@ class DrinksVolumeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    drink_id: Field::Number,
-    volume_id: Field::Number,
+    drink: Field::BelongsTo,
+    volume: Field::BelongsTo,
     price: Field::Number.with_options(decimals: 2),
   }.freeze
 
@@ -20,16 +20,16 @@ class DrinksVolumeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :drink_id,
-    :volume_id,
+    :drink,
+    :volume,
     :price,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :drink_id,
-    :volume_id,
+    :drink,
+    :volume,
     :price,
   ].freeze
 
@@ -37,8 +37,8 @@ class DrinksVolumeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :drink_id,
-    :volume_id,
+    :drink,
+    :volume,
     :price,
   ].freeze
 

@@ -10,7 +10,7 @@ class DrinkSubAdditionDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    drink_addition: Field::HasOne,
+    drink_addition: Field::BelongsTo,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

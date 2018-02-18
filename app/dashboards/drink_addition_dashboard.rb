@@ -41,7 +41,7 @@ class DrinkAdditionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how drink additions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(drink_addition)
-  #   "DrinkAddition ##{drink_addition.id}"
-  # end
+  def display_resource(drink_addition)
+    drink_addition.name
+  end
 end

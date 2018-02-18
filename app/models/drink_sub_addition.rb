@@ -1,3 +1,3 @@
 class DrinkSubAddition < ApplicationRecord
-  has_one :drink_addition
+  belongs_to :drink_addition
 end
