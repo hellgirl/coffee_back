@@ -10,6 +10,7 @@ class DrinkDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    coffee_image: CarrierwaveField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -19,12 +20,14 @@ class DrinkDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
+    :coffee_image,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :coffee_image,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -32,6 +35,7 @@ class DrinkDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :coffee_image,
   ].freeze
 
   # Overwrite this method to customize how drinks are displayed
