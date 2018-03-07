@@ -3,7 +3,7 @@ module Api
   module V1
     class DrinksController < ApplicationController
       def index
-        @drinks = Drink.all
+        @drinks = Drink.includes(:drinks_volumes)
       end
     end
   end
