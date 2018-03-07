@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307164935) do
+ActiveRecord::Schema.define(version: 20180307171434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(version: 20180307164935) do
     t.index ["volume_id"], name: "index_drinks_volumes_on_volume_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "drinks_volume_id"
+    t.bigint "user_id"
+    t.integer "additions", default: [], array: true
+    t.integer "sub_additions", default: [], array: true
+    t.string "code", null: false
+    t.string "status", null: false
+    t.string "comment"
+    t.float "total"
+    t.index ["drinks_volume_id"], name: "index_orders_on_drinks_volume_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "stuff_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -102,4 +115,6 @@ ActiveRecord::Schema.define(version: 20180307164935) do
   add_foreign_key "drink_sub_additions", "drink_additions"
   add_foreign_key "drinks_volumes", "drinks"
   add_foreign_key "drinks_volumes", "volumes"
+  add_foreign_key "orders", "drinks_volumes"
+  add_foreign_key "orders", "users"
 end
