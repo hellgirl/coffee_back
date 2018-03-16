@@ -10,7 +10,8 @@ class DrinkDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    coffee_image: CarrierwaveField
+    coffee_image: CarrierwaveField,
+    description: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -21,6 +22,7 @@ class DrinkDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :coffee_image,
+    :description
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -28,6 +30,7 @@ class DrinkDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :coffee_image,
+    :description
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -36,6 +39,7 @@ class DrinkDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :coffee_image,
+    :description
   ].freeze
 
   # Overwrite this method to customize how drinks are displayed
