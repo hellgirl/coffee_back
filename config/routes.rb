@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   devise_for :staff_users, skip: [:registrations]
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  
   namespace :api do
     mount_devise_token_auth_for "User", at: "auth"
     namespace :v1 do
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :drink_additions, only: :index, defaults: { format: :json }
       resources :drink_sub_additions, only: :index, defaults: { format: :json }
       resources :coffee_shops, only: :index, defaults: { format: :json }
+      resources :orders, only: :create, defaults: { format: :json }
     end
   end
 end

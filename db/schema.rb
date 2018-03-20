@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316210914) do
+ActiveRecord::Schema.define(version: 20180320204814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180316210914) do
     t.integer "sub_additions", default: [], array: true
     t.string "code", null: false
     t.string "status", null: false
-    t.string "comment"
+    t.text "comment"
     t.float "total"
     t.index ["drinks_volume_id"], name: "index_orders_on_drinks_volume_id"
     t.index ["user_id"], name: "index_orders_on_user_id"

@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :drinks_volumes
-  belongs_to :users
+  enum status: { draft: 'draft', paid: 'paid', prepared: 'prepared' }
+
+  belongs_to :drinks_volume
+  belongs_to :user
 end
