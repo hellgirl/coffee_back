@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   devise_for :staff_users, skip: [:registrations]
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
+  namespace :staff do
+    resources :orders, only: :index
+  end
+
   namespace :api do
     mount_devise_token_auth_for "User", at: "auth"
     namespace :v1 do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320204814) do
+ActiveRecord::Schema.define(version: 20180321183018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20180320204814) do
   create_table "orders", force: :cascade do |t|
     t.bigint "drinks_volume_id"
     t.bigint "user_id"
-    t.integer "additions", default: [], array: true
     t.integer "sub_additions", default: [], array: true
     t.string "code", null: false
     t.string "status", null: false
@@ -72,6 +71,13 @@ ActiveRecord::Schema.define(version: 20180320204814) do
     t.float "total"
     t.index ["drinks_volume_id"], name: "index_orders_on_drinks_volume_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "orders_additions", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "drink_addition_id"
+    t.index ["drink_addition_id"], name: "index_orders_additions_on_drink_addition_id"
+    t.index ["order_id"], name: "index_orders_additions_on_order_id"
   end
 
   create_table "staff_users", force: :cascade do |t|
@@ -122,4 +128,6 @@ ActiveRecord::Schema.define(version: 20180320204814) do
   add_foreign_key "drinks_volumes", "volumes"
   add_foreign_key "orders", "drinks_volumes"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_additions", "drink_additions"
+  add_foreign_key "orders_additions", "orders"
 end

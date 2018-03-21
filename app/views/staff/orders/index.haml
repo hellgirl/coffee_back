@@ -1,0 +1,18 @@
+%table.table
+  %thead
+    %tr
+      %th Номер Заказа
+      %th Email пользователя
+      %th Детали заказа
+      %th Комментарий к заказу
+      %th Действия
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.code
+        %td= order.user.email
+        %td
+          %bold= "#{order.drinks_volume.drink.name} (#{order.drinks_volume.volume.volume})"
+          %p= order.drink_additions.pluck(:name).join(", ")
+        %td= order.comment
+        %td

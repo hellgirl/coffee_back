@@ -3,4 +3,6 @@ class Order < ApplicationRecord
 
   belongs_to :drinks_volume
   belongs_to :user
+  has_many :orders_additions
+  has_many :drink_additions, through: :orders_additions
 end

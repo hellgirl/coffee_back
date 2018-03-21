@@ -4,7 +4,7 @@ module Api
     class OrdersController < Api::ApplicationController
       before_action :authenticate_user!
 
-      PERMITTED_PARAMS = [:drinks_volume_id, :comment, additions: []].freeze
+      PERMITTED_PARAMS = [:drinks_volume_id, :comment, drink_addition_ids: []].freeze
 
       def create
         @order = DraftOrderCreator.new(current_user, order_params, DrinkTotalCalculator.new(order_params).total)
