@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   namespace :staff do
     resources :orders, only: :index
+    resource :prepare_drink, only: :create
   end
 
   namespace :api do

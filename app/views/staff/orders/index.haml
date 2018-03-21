@@ -1,4 +1,4 @@
-%table.table
+%table.table.js-orders-table
   %thead
     %tr
       %th Номер Заказа
@@ -8,11 +8,11 @@
       %th Действия
   %tbody
     - @orders.each do |order|
-      %tr
+      %tr{class: "js-order-row-#{order.id}"}
         %td= order.code
         %td= order.user.email
         %td
           %bold= "#{order.drinks_volume.drink.name} (#{order.drinks_volume.volume.volume})"
           %p= order.drink_additions.pluck(:name).join(", ")
         %td= order.comment
-        %td
+        %td.js-action-row= link_to("Приготовить", staff_prepare_drink_path(order_id: order.id), remote: true, method: :post)
