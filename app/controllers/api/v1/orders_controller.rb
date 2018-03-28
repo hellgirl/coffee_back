@@ -7,7 +7,7 @@ module Api
       PERMITTED_PARAMS = [:drinks_volume_id, :comment, drink_addition_ids: []].freeze
 
       def index
-        @orders = current_user.orders
+        @orders = current_user.orders.group_by(&:status)
       end
 
       def create

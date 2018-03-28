@@ -14,6 +14,6 @@ class DrinkTotalCalculator
   end
 
   def additions_price
-    ::DrinkAddition.where(id: @params.fetch(:additions, [])).pluck(:price).to_a.sum
+    ::DrinkAddition.where(id: @params.fetch(:drink_addition_ids, [])).pluck(:price).to_a.sum
   end
 end
