@@ -2,7 +2,7 @@ json.extract! order, :id, :code, :status, :comment, :total
 
 json.drink do
   json.id order.drinks_volume.id
-  json.drink order.drinks_volume.drink.name
+  json.name order.drinks_volume.drink.name
   json.volume order.drinks_volume.volume.volume
 end
 
