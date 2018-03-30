@@ -13,7 +13,7 @@ class BreakService
 
   def break_till
     break_till_time = @redis.get(REDIS_KEY)
-    return break_till_time if Time.zone.now < break_till_time
+    return break_till_time if break_till_time.blank? || Time.zone.now < break_till_time
     @redis.del(REDIS_KEY)
     nil
   end
