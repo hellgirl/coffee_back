@@ -7,6 +7,11 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
+    before_action :set_paper_trail_whodunnit
+
+    def user_for_paper_trail
+      "Admin_#{current_admin_user}"
+    end
 
     def authenticate_admin
       redirect_to new_admin_user_session_path unless current_admin_user

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :drink_additions
     resources :coffee_shops
 
-    root to: "admin_users#index"
+    root to: "drinks#index"
   end
 
   devise_for :admin_users, skip: [:registrations]

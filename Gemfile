@@ -13,6 +13,8 @@ gem "jquery-rails"
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
 
+gem "paper_trail", "~> 9.0.0"
+
 gem "administrate"
 gem "carrierwave", "~> 1.0"
 gem "devise"
