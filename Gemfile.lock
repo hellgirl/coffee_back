@@ -110,6 +110,7 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashie (3.5.7)
+    hiredis (0.4.5)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -197,6 +198,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (3.0.7)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -269,6 +271,7 @@ DEPENDENCIES
   devise_token_auth (~> 0.1.43)
   haml (~> 4.1.0.beta.1)
   haml-rails (~> 1.0.0)
+  hiredis (~> 0.4.5)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
@@ -277,6 +280,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.7)
   rails (~> 5.1.5)
+  redis (~> 3.0.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

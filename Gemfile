@@ -10,6 +10,9 @@ gem "haml-rails", "~> 1.0.0"
 gem "bootstrap", "~> 4.0.0"
 gem "jquery-rails"
 
+gem "redis", "~> 3.0.1"
+gem "hiredis", "~> 0.4.5"
+
 gem "administrate"
 gem "carrierwave", "~> 1.0"
 gem "devise"

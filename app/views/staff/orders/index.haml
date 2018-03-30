@@ -1,3 +1,12 @@
+%div
+  = form_for :break, url: staff_break_url, remote: true do |break_form|
+    Перерыв:
+    = break_form.text_field :time
+    минут
+    = break_form.submit
+.js-break-till-container
+  = render "staff/break/break_till", break_till: @break_till
+
 %table.table.js-orders-table
   %thead
     %tr
