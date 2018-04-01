@@ -1,0 +1,66 @@
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyDNSBMp3qGRcHozMiKk_IhhXQzyXEwKGyo",
+    authDomain: "nicecoffee-57e78.firebaseapp.com",
+    databaseURL: "https://nicecoffee-57e78.firebaseio.com",
+    projectId: "nicecoffee-57e78",
+    storageBucket: "",
+    messagingSenderId: "978135584480"
+  };
+  firebase.initializeApp(config);
+
+  const messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BPC85ILQOaKObrR6_mXbEAiPWAFB-tWPj5LJfeIx6IDtcwbk2MfjRaZrJmux71fyKGO4VaSYhroXzsvErQpzjU0");
+
+  if('Notification' in window) {
+    subscribe();
+  }
+
+  function subscribe() {
+    messaging.requestPermission()
+      .then(function () {
+        messaging.getToken()
+          .then(function (currentToken) {
+            if (currentToken) {
+              sendTokenToServer(currentToken);
+            } else {
+              console.warn('Не удалось получить токен.');
+              setTokenSentToServer(false);
+            }
+          })
+          .catch(function (error) {
+            console.warn('При получении токена произошла ошибка.', error);
+            setTokenSentToServer(false);
+          });
+          messaging.onMessage(function(payload) {
+            console.log('Message received. ', payload);
+            new Notification(payload.notification.title, payload.notification);
+          });
+      })
+      .catch(function (error) {
+        console.warn('Не удалось получить разрешение на показ уведомлений.', error);
+      });
+  }
+
+  function sendTokenToServer(currentToken) {
+    if (!isTokenSentToServer(currentToken)) {
+      console.log('Отправка токена на сервер...');
+
+      $.post('<%= staff_notification_tokens_url %>', { notification_token: currentToken });
+      setTokenSentToServer(currentToken);
+      } else {
+        console.log('Токен уже отправлен на сервер.');
+      }
+  }
+
+  function isTokenSentToServer(currentToken) {
+    return window.localStorage.getItem('sentFirebaseMessagingToken') == currentToken;
+  }
+
+  function setTokenSentToServer(currentToken) {
+    window.localStorage.setItem('sentFirebaseMessagingToken', currentToken ? currentToken : '');
+  }
+</script>

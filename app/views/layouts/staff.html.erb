@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>CoffeeBack</title>
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,4 +12,6 @@
   <body>
     <%= yield %>
   </body>
+
+  <%= render "layouts/firebase_notifications" %>
 </html>

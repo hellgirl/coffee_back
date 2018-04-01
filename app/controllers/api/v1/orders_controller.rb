@@ -14,6 +14,7 @@ module Api
         return if BreakService.new.break_till.present?
         @order = DraftOrderCreator.new(current_user, order_params, DrinkTotalCalculator.new(order_params).total)
           .create
+        NewOrderNotificationService.new(@order).send_notification
       end
 
       private

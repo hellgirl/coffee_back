@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :orders, only: :index
     resource :prepare_drink, only: :create
     resource :break, only: :create, controller: :break
+    resource :notification_tokens, only: :create
   end
 
   namespace :api do

@@ -5,6 +5,8 @@ module Staff
     before_action :authenticate_staff_user!
     before_action :set_paper_trail_whodunnit
 
+    layout "staff"
+
     def user_for_paper_trail
       "Staff_#{current_staff_user.id}"
     end
