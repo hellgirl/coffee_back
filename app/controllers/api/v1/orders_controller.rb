@@ -15,6 +15,7 @@ module Api
         @order = DraftOrderCreator.new(current_user, order_params, DrinkTotalCalculator.new(order_params).total)
           .create
         NewOrderNotificationService.new(@order).send_notification
+        Pusher.trigger("coffee", "ordered", (render_to_string(partial: "staff/orders/order", locals: { order: @order })))
       end
 
       private

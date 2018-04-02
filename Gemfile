@@ -17,6 +17,8 @@ gem "http", "~> 3.0.0"
 
 gem "paper_trail", "~> 9.0.0"
 
+gem "pusher", "~> 1.3.1"
+
 gem "administrate"
 gem "carrierwave", "~> 1.0"
 gem "devise"

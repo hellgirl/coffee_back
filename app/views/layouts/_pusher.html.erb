@@ -1,0 +1,16 @@
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script>
+
+  // Enable pusher logging - don't include this in production
+  Pusher.logToConsole = true;
+
+  var pusher = new Pusher('<%= ENV["PUSHER_KEY"]%>', {
+    cluster: '<%= ENV["PUSHER_CLUSTER"]%>',
+    encrypted: true
+  });
+
+  var channel = pusher.subscribe('coffee');
+  channel.bind('ordered', function(data) {
+    $(".js-orders-table").append(data)
+  });
+</script>
