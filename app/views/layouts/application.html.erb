@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <div class="header">
+      <% if current_admin_user.present? %>
+        <div class="float-right"><%= link_to "Выйти", destroy_admin_user_session_path, method: :delete %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
