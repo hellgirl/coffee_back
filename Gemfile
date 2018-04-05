@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "aws-sdk-s3", "~> 1.9.0"
+gem "fog-aws", "~> 2.0.1"
+
 gem "haml", "~> 4.1.0.beta.1"
 gem "haml-rails", "~> 1.0.0"
 gem "bootstrap", "~> 4.0.0"
