@@ -42,6 +42,6 @@ class VolumeDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(volume)
-    volume.volume
+    "#{volume.name} (#{volume.volume})"
   end
 end
