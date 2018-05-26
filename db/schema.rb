@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331181800) do
+ActiveRecord::Schema.define(version: 20180526152705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 20180331181800) do
     t.index ["order_id"], name: "index_orders_additions_on_order_id"
   end
 
+  create_table "payment_cards", force: :cascade do |t|
+    t.json "card_meta"
+    t.string "payment_method_id"
+    t.string "title"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_payment_cards_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "order_id"
+    t.json "yandex_meta"
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
+
   create_table "staff_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -133,4 +147,6 @@ ActiveRecord::Schema.define(version: 20180331181800) do
   add_foreign_key "orders", "users"
   add_foreign_key "orders_additions", "drink_additions"
   add_foreign_key "orders_additions", "orders"
+  add_foreign_key "payment_cards", "users"
+  add_foreign_key "payments", "orders"
 end

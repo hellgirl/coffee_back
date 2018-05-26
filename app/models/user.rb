@@ -6,4 +6,5 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   has_many :orders
+  has_many :payment_cards
 end

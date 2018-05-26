@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       resources :drink_additions, only: :index, defaults: { format: :json }
       resources :coffee_shops, only: :index, defaults: { format: :json }
       resources :orders, only: %i(index create), defaults: { format: :json }
+      resources :payment_cards, only: :index, defaults: { format: :json }
     end
   end
+
+  resource :payments, only: :create
 end
