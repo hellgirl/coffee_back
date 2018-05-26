@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526152705) do
+ActiveRecord::Schema.define(version: 20180526181159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,15 @@ ActiveRecord::Schema.define(version: 20180526152705) do
     t.float "price", null: false
   end
 
+  create_table "drink_categories", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "drinks", force: :cascade do |t|
     t.string "name", null: false
     t.string "coffee_image"
     t.string "description"
+    t.integer "drink_category_id"
   end
 
   create_table "drinks_volumes", force: :cascade do |t|
@@ -141,6 +146,7 @@ ActiveRecord::Schema.define(version: 20180526152705) do
     t.integer "volume", null: false
   end
 
+  add_foreign_key "drinks", "drink_categories"
   add_foreign_key "drinks_volumes", "drinks"
   add_foreign_key "drinks_volumes", "volumes"
   add_foreign_key "orders", "drinks_volumes"
