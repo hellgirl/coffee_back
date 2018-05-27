@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class PaymentProcessor
-  SUCCEED = "succeeded"
 
   def initialize(data)
     @data = data[:object]
@@ -14,7 +13,7 @@ class PaymentProcessor
     card = user.payment_cards.where(payment_method_id: payment_method_id)
     unless card
       user.create_payment_card(card_meta: @data["payment_method"]["card"], payment_method_id: payment_method_id,
-                               title: @data["payment_method"]["title"])
+                               title: @data["payment_method"]["title"], default: true)
     end
     return unless @data["paid"]
     order.update(status: Order.statuses[:paid])
