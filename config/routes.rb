@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :drinks_volumes
     resources :drink_additions
     resources :coffee_shops
+    resources :drink_categories
 
     root to: "drinks#index"
   end
