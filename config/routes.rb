@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   end
 
   resource :payments, only: :create
+
+  get "/", :to => redirect('/about-us.html')
 end
