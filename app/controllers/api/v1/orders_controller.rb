@@ -10,6 +10,10 @@ module Api
         @orders = current_user.orders.group_by(&:status)
       end
 
+      def show
+        @order = current_user.orders.find(params.require(:id))
+      end
+
       def create
         return if BreakService.new.break_till.present?
         @order = DraftOrderCreator.new(current_user, order_params, DrinkTotalCalculator.new(order_params).total)
