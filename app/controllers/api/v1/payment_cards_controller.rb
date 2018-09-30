@@ -7,6 +7,12 @@ module Api
       def index
         @payment_cards = current_user.payment_cards
       end
+
+      #TODO return only success or failure
+      def destroy
+        current_user.payment_cards.find(params.require(:id)).destroy
+        @payment_cards = current_user.payment_cards
+      end
     end
   end
 end
