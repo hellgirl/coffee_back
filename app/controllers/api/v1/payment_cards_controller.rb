@@ -5,13 +5,13 @@ module Api
       before_action :authenticate_user!
 
       def index
-        @payment_cards = current_user.payment_cards
+        @payment_cards = current_user.payment_cards.active
       end
 
       #TODO return only success or failure
       def destroy
-        current_user.payment_cards.find(params.require(:id)).destroy
-        @payment_cards = current_user.payment_cards
+        PaymentCardDestroyer.new(current_user, params.require(:id))
+        @payment_cards = current_user.payment_cards.active
       end
     end
   end

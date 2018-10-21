@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180804142230) do
+ActiveRecord::Schema.define(version: 20181021144212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20180804142230) do
     t.string "title"
     t.bigint "user_id"
     t.boolean "default", null: false
+    t.boolean "deleted"
     t.index ["user_id"], name: "index_payment_cards_on_user_id"
   end
 
