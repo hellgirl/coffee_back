@@ -10,7 +10,7 @@ module Api
       private
 
       def drinks
-        Drink.includes(:drinks_volumes)
+        Drink.all
       end
     end
   end
