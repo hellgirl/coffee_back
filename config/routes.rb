@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :coffee_shops
     resources :drink_categories
     resources :settings, only: %i(edit update index show)
+    resources :payments, only: %i(index show)
+    resources :orders, only: %i(index show)
 
     root to: "drinks#index"
   end
