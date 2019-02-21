@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
+    resources :staff_users
     resources :users
     resources :drinks
     resources :volumes
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
     resource :prepare_drink, only: :create
     resource :break, only: :create, controller: :break
     resource :notification_tokens, only: :create
+
+    root to: "orders#index"
   end
 
   namespace :api do
